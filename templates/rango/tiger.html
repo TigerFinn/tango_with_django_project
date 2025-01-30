@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html>
+    <head>
+        <title>A Tiger!</title>
+    </head>
+    <body>
+        <h1>Tigers are {{tigerMessage}}</h1>
+        <br />
+        <ol>
+            <li>Cute</li>
+            <li>Awesome</li>
+            <li>And apparently they are also {{tigerMessage}}</li>
+        </ol>
+        <br />
+        <strong>{{finalMessage}}</strong>
+        <br />
+        <a href = '/rango/tiger2'>Tiger 2</a>
+        <img src = '{{ MEDIA_URL }}tiger.jpeg' alt = "A very cute animal">
+    </body>
+</html>
