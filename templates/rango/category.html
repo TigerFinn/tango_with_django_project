@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>Rango</title>
-    </head>
+    {% extends 'rango/base.html' %}
+
 
     <body>
         <div>
@@ -18,13 +17,12 @@
                 {% else %}
                 <strong>No pages currently in category.</strong>
                 {% endif%}
+                <div>
+                    <a href="/rango/category/{{ category.slug }}/add_page/">Add Page.</a>
+                </div>
             {% else %}
                 The specified category does not exist.
             {% endif %}
-        </div>
-
-        <div>
-            <a href="/rango/">Index</a>
         </div>
     </body>
 
