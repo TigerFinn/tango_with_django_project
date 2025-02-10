@@ -1,28 +1,12 @@
 from django import forms
-from rango.models import Page, Category
+from rango.models import Page, Category, UserProfile
+from django.contrib.auth.models import User
 
 class CategoryForm(forms.ModelForm):
     name = forms.CharField(max_length=Category.NAME_MAX_LENGTH, help_text="Please enter the category name.")
     views = forms.IntegerField(widget=forms.HiddenInput(),initial=0)
     likes = forms.IntegerField(widget=forms.HiddenInput(),initial=0)
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
-
-    # def clean(self):
-    #     cleaned_data = self.cleaned_data
-    #     name = cleaned_data.get('name')
-    #     if not name:
-    #         name = "No_Name_Given"
-    #     name = self.amend_name_for_duplicates(name)
-    #     print(name)
-    #     cleaned_data['name'] = name
-    #     return cleaned_data
-
-    def amend_name_for_duplicates(self, new_name):
-        if Category.objects.filter(name=new_name).exists():
-            print("I exist")
-            return self.amend_name_for_duplicates(new_name + "*")
-        else:
-            return new_name
 
     class Meta:
         model = Category
@@ -45,4 +29,18 @@ class PageForm(forms.ModelForm):
     class Meta:
         model = Page
         exclude = ('category',)
+
+
+class UserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password',)
+
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('website','picture')
 

@@ -1,5 +1,6 @@
 from django.contrib import admin
 from rango.models import Category, Page
+from rango.models import UserProfile
 
 
 #A class that allows pages to be displayed whilst editing a category
@@ -28,3 +29,4 @@ class PageAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Page, PageAdmin)
+admin.site.register(UserProfile)
